@@ -1,37 +1,23 @@
 package ru.netology.Manager;
 
-import ru.netology.Domain.MovieItem;
+import ru.netology.Domain.PurchaseItem;
 
 public class Manager {
 
-    private MovieItem[] items = new MovieItem[0];
-   private  int returnMovies=10;
+    private PurchaseItem[] items = new PurchaseItem[0];
 
-
-    public Manager(int returnMovies) {
-
-        this.returnMovies = returnMovies;
-    }
-
-    public Manager() {
-
-    }
-
-
-    public void add(MovieItem item) {
+    public void add(PurchaseItem item) {
         int length = items.length + 1;
-        MovieItem[] tmp = new MovieItem[length];
+        PurchaseItem[] tmp = new PurchaseItem[length];
         System.arraycopy(items, 0, tmp, 0, items.length);
         int LastIndex = tmp.length - 1;
         tmp[LastIndex] = item;
         items = tmp;
     }
 
-    public MovieItem[] getAll() {
-       int resultSize= Math.min(items.length, returnMovies);
+    public PurchaseItem[] getAll() {
 
-
-        MovieItem[] result = new MovieItem[resultSize];
+        PurchaseItem[] result = new PurchaseItem[items.length];
 
         for (int i = 0; i < result.length; i++) {
             int index = items.length - i - 1;
@@ -43,10 +29,10 @@ public class Manager {
 
         public void removeById(int movieId){
             int length = items.length - 1;
-            MovieItem[] tmp = new MovieItem[length];
+            PurchaseItem[] tmp = new PurchaseItem[length];
             int index = 0;
-            for (MovieItem item : items) {
-                if (item.getMovieId() != movieId) {
+            for (PurchaseItem item : items) {
+                if (item.getId() != movieId) {
                     tmp[index] = item;
                     index++;
                 }
